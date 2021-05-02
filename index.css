@@ -1,0 +1,13 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.h1{
+    font-weight: bold;
+}
+a{
+    font-size: 12pt;
+    color:slateblue;
+}
+p{
+    font-size: 12pt;
+}
