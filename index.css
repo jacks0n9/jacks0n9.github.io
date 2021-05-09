@@ -1,13 +1,19 @@
-*{
+body{
     font-family: Arial, Helvetica, sans-serif;
+    background-color: azure;
 }
-.h1{
-    font-weight: bold;
+h1{
+    text-align: center;
 }
 a{
-    font-size: 12pt;
+    font-size: 15pt;
     color:slateblue;
 }
 p{
     font-size: 12pt;
+    padding-left: 5pt;
+}
+.sitelist{
+    display: flex;
+    justify-content: center;
 }
