@@ -24,22 +24,42 @@ function generateSaveString(earnHistory){
         saveString+=action.timestamp+";"+action.id
     }
 }
+function getTimeInSeconds(){
+    return Math.floor(new Date().getTime()/1000)
+}
 // Format:
 // <time stamp in seconds since unix epoch>;<action>;key=val;
+var prevObjects={}
 var earnHistory=[]
 var mod_obj={
     init:function(){
 		Game.registerHook("click",()=>{
-            earnHistory.push(actionObj(Math.floor(new Date().getTime()/1000),"click",{}))
+            earnHistory.push(actionObj(getTimeInSeconds(),"click",{}))
             console.log(earnHistory)
+        })
+        Game.registerHook("logic",()=>{
+            var objects=Game.ObjectsByID()
+            if(prevObjects!={}){
+                for(const [index,obj] of objects){
+                    var prevObjAmount=prev_objects[index].amount
+                    if(obj.amount>prevObjAmount){
+                        earnHistory.push(actionObj(getTimeInSeconds(),"buyObject",{amount:obj.amount-prevObjAmount,building_id:obj.single}))
+                        console.log("Bought building: "+obj.single)
+                    }else if(obj.amount<prevObjAmount){
+                        earnHistory.push(actionObj(getTimeInSeconds(),"sellObject",{amount:prevObjAmount-obj.amoun,building_id:obj.single}))
+                        console.log("Sold building: "+obj.single)
+                    }
+                }
+            }
+            prev_objects=objects
         })
 	},
 	save:function(){
 	    //use this to store persistent data associated with your mod
 		return generateSaveString(earnHistory);
 	},
-	load:function(str){
-		//do stuff with the string data you saved previously
+	load:function(save){
+		console.log(save)
 	}
 }
 Game.registerMod("ccac",mod_obj)
