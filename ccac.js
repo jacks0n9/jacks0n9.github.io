@@ -11,7 +11,7 @@ function actionObj(timestamp,id,data){
 }
 function generateSaveString(earnHistory){
     var saveString=""
-    for (const [index,action] of earnHistory.entries()){
+    for (const action of earnHistory){
         dataStr=""
         if (action.data!={}){
             for(const [key,val] of Object.entries(action.data)){
