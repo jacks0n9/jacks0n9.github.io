@@ -37,7 +37,7 @@ var mod_obj={
             earnHistory.push(actionObj(getTimeInSeconds(),"click",{}))
             console.log(earnHistory)
         })
-        Game.registerHook("logic",()=>{
+        Game.registerHook("check",()=>{
             var objects=Game.ObjectsByID
             if(prevObjects!={}){
                 for(const [index,obj] of objects.entries()){
