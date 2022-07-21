@@ -38,7 +38,7 @@ var mod_obj={
             console.log(earnHistory)
         })
         Game.registerHook("check",()=>{
-            var objects=Game.ObjectsByID
+            var objects=Objects.create(Game.ObjectsByID)
             if(prevObjects!={}){
                 for(const [index,obj] of objects.entries()){
                     var prevObjAmount=prev_objects[index].amount
