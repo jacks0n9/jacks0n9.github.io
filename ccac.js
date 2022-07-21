@@ -13,6 +13,7 @@ function actionObj(timestamp,id,data){
 function generateSaveString(earnHistory){
     var saveString=""
     for (const action of earnHistory){
+        console.log(action)
         dataStr=""
         if (action.data!={}){
             for(const [key,val] of Object.entries(action.data)){
@@ -29,7 +30,8 @@ var earnHistory=[]
 var mod_obj={
     init:function(){
 		Game.registerHook("click",()=>{
-            earnHistory+=actionObj(Math.floor(new Date().getTime/1000),"click",{})
+            earnHistory.push(actionObj(Math.floor(new Date().getTime/1000),"click",{}))
+            console.log(earnHistory)
         })
 	},
 	save:function(){
