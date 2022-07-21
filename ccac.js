@@ -40,7 +40,7 @@ var mod_obj={
         Game.registerHook("logic",()=>{
             var objects=Game.ObjectsByID
             if(prevObjects!={}){
-                for(const [index,obj] of objects){
+                for(const [index,obj] of objects.entries()){
                     var prevObjAmount=prev_objects[index].amount
                     if(obj.amount>prevObjAmount){
                         earnHistory.push(actionObj(getTimeInSeconds(),"buyObject",{amount:obj.amount-prevObjAmount,building_id:obj.single}))
