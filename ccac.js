@@ -28,7 +28,7 @@ var earnHistory=[]
 var mod_obj={
     init:function(){
 		Game.registerHook("click",()=>{
-            earnHistory+=actionObj(Math.floor(new Date().now()/1000))
+            earnHistory+=actionObj(Math.floor(new Date().getTime/1000))
         })
 	},
 	save:function(){
