@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="favicon" href="favicon.ico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Jackson's Website">
-    <meta property="og:description" content="This is Jackson's awesome website of coolness.">
-    <meta property="og:image" content="/assets/profile.png">
-    <meta property="og:image:secure_url" content="/assets/profile.png">
-    <meta poperty="og:image:width" content="500">
-    <meta poperty="og:image:height" content="500">
-    <meta property="og:image:alt" content="Jackson's profile picture.">
-    <meta name="theme-color" content="#00ff00">
-    <link rel="stylesheet" href="./index.css">
-    <title>Jackson's Website</title>
+    <title>Gender Calculator</title>
+    <style>
+        body{
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        }
+        h1{
+            color: blue;
+        }
+        h2{
+            color:green;
+        }
+        p{
+            color:darkmagenta
+        }
+    </style>
+    <script>
+   
+        function calculateGender(){
+            let input=document.querySelector('input[name="has_penis"]:checked');
+            let result=document.getElementById("result")
+            if(!input){
+                result.innerHTML="Choose a fucking option dipshit"
+                return
+            }
+            if(input.value=="yes"){
+                result.innerHTML="You are a male!"
+            }else{
+                result.innerHTML="You are a female!"
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Jackson's Website</h1>
-    <p>
-        I'm Jackson, I'm a programmer with experience with python and go(lang)
-    </p>
-    <h2>Here is some stuff you might find useful:</h2>
-    <ul class="sitelist">
-        <li><a href="/debloated/">Debloated recipe collection</a></li>
-    </ul>
-    
+    <h1>Calculate Your Gender Here!</h1>
+    <h2>Just select your answer to this one simple question:</h2>
+    <p>Do you have a penis?</p>
+    <input type="radio" id="yes" name="has_penis" value="yes">
+    <label for="yes">Yes</label><br>
+    <input type="radio" id="no" name="has_penis" value="no">
+    <label for="no">No</label>
+    <br>
+    <button onclick="calculateGender()">Calculate</button>
+    <p id="result"></p>
 </body>
 </html>
