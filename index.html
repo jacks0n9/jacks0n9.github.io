@@ -4,48 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gender Calculator</title>
-    <style>
-        body{
-            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-        }
-        h1{
-            color: blue;
-        }
-        h2{
-            color:green;
-        }
-        p{
-            color:darkmagenta
-        }
-    </style>
-    <script>
-   
-        function calculateGender(){
-            let input=document.querySelector('input[name="has_penis"]:checked');
-            let result=document.getElementById("result")
-            if(!input){
-                result.innerHTML="Choose a fucking option dipshit"
-                return
-            }
-            if(input.value=="yes"){
-                result.innerHTML="You are a male!"
-            }else{
-                result.innerHTML="You are a female!"
-            }
-        }
-    </script>
+    <title>Jacks0n9</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Calculate Your Gender Here!</h1>
-    <h2>Just select your answer to this one simple question:</h2>
-    <p>Do you have a penis?</p>
-    <input type="radio" id="yes" name="has_penis" value="yes">
-    <label for="yes">Yes</label><br>
-    <input type="radio" id="no" name="has_penis" value="no">
-    <label for="no">No</label>
-    <br>
-    <button onclick="calculateGender()">Calculate</button>
-    <p id="result"></p>
+    <h1>Homepage</h1>
+    <h2><a href="/debloated/">Debloated recipes</a></h2>
+    <h2><a href="/gender/">Gender calculator</a></h2>
+    <h2><a href="https://github.com/jacks0n9/haccernuke">Haccernuke</a></h2>
+    <h2><a href="https://github.com/jacks0n9/haccerinteractions">haccerinteractions (self botting)</a></h2>
+    <h2><a href="https://github.com/jacks0n9/GoUrban">Urban Dictionary Api Wrapper</a></h2>
 </body>
 </html>
