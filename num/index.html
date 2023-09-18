@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer guesses your number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Computer guesses your number</h1>
+    <form id="range-form">
+        <label for="min">Minimum Number:</label>
+        <input type="number" id="min" min="1" max="99">
+        <br>
+        <label for="max">Maximum Number:</label>
+        <input type="number" id="max" min="2" max="100">
+        <br>
+        <button type="submit">Start Game</button>
+    </form>
+
+    <p id="instructions" style="display: none;">Think of a number between <span id="min-label">1</span> and <span id="max-label">100</span>, and I will try to guess it.</p>
+    <p id="guess-text" style="display: none;">Is your number higher or lower than <span id="guess">50</span>?</p>
+    <button id="higher" style="display: none;">Higher</button>
+    <button id="lower" style="display: none;">Lower</button>
+    <button id="correct" style="display: none;">Correct</button>
+
+    <script>
+        document.getElementById('range-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const min = parseInt(document.getElementById('min').value);
+            const max = parseInt(document.getElementById('max').value);
+            if (min < max) {
+                startGame(min, max);
+            } else {
+                alert('Invalid range. Please ensure that the minimum is less than the maximum.');
+            }
+        });
+
+        let min, max, guess;
+
+        function startGame(newMin, newMax) {
+            min = newMin;
+            max = newMax;
+            guess = Math.floor((min + max) / 2);
+            document.getElementById('min-label').textContent = min;
+            document.getElementById('max-label').textContent = max;
+            document.getElementById('range-form').style.display = 'none';
+            document.getElementById('instructions').style.display = 'block';
+            document.getElementById('guess-text').style.display = 'block';
+            document.getElementById('higher').style.display = 'block';
+            document.getElementById('lower').style.display = 'block';
+            document.getElementById('correct').style.display = 'block';
+            updateGuess();
+        }
+
+        document.getElementById('higher').addEventListener('click', () => {
+            min = guess + 1;
+            guess = Math.floor((min + max) / 2);
+            updateGuess();
+        });
+
+        document.getElementById('lower').addEventListener('click', () => {
+            max = guess - 1;
+            guess = Math.floor((min + max) / 2);
+            updateGuess();
+        });
+
+        document.getElementById('correct').addEventListener('click', () => {
+            alert('Hooray! I guessed your number!');
+            resetGame();
+        });
+
+        function updateGuess() {
+            document.getElementById('guess').textContent = guess;
+        }
+
+        function resetGame() {
+            document.getElementById('range-form').reset();
+            document.getElementById('range-form').style.display = 'block';
+            document.getElementById('instructions').style.display = 'none';
+            document.getElementById('guess-text').style.display = 'none';
+            document.getElementById('higher').style.display = 'none';
+            document.getElementById('lower').style.display = 'none';
+            document.getElementById('correct').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
