@@ -1,1 +1,1 @@
-include: [".well-known/matrix/client"]
+include: [".well-known"]
